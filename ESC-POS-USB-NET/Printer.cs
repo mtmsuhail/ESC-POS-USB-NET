@@ -5,6 +5,7 @@ using ESC_POS_USB_NET.Interfaces.Command;
 using ESC_POS_USB_NET.Interfaces.Printer;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace ESC_POS_USB_NET.Printer
@@ -280,9 +281,9 @@ namespace ESC_POS_USB_NET.Printer
             RawPrinterHelper.SendBytesToPrinter(_printerName, _command.InitializePrint.Initialize());
         }
 
-        public void Image(string path)
+        public void Image(Bitmap image)
         {
-            Append(_command.Image.Print(path));
+            Append(_command.Image.Print(image));
         }
     }
 }
