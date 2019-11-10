@@ -1,23 +1,22 @@
 ﻿using System.Collections;
 using System;
-using System.Drawing;
 using System.IO;
 using ESC_POS_USB_NET.Interfaces.Command;
+using System.Drawing;
 
 namespace ESC_POS_USB_NET.EpsonCommands
 {
     public class Image : IImage
     {
-        private static BitmapData GetBitmapData(string bmpFileName)
+        private static BitmapData GetBitmapData(Bitmap bmp)
         {
-            using (var bitmap = (Bitmap)Bitmap.FromFile(bmpFileName))
-            {
+  
                 var threshold = 127;
                 var index = 0;
                 double multiplier = 500; // this depends on your printer model.  for Beiyang you should use 1000
-                double scale = (double)(multiplier / (double)bitmap.Width);
-                int xheight = (int)(bitmap.Height * scale);
-                int xwidth = (int)(bitmap.Width * scale);
+                double scale = (double)(multiplier / (double)bmp.Width);
+                int xheight = (int)(bmp.Height * scale);
+                int xwidth = (int)(bmp.Width * scale);
                 var dimensions = xwidth * xheight;
                 var dots = new BitArray(dimensions);
 
@@ -27,7 +26,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
                     {
                         var _x = (int)(x / scale);
                         var _y = (int)(y / scale);
-                        var color = bitmap.GetPixel(_x, _y);
+                        var color = bmp.GetPixel(_x, _y);
                         var luminance = (int)(color.R * 0.3 + color.G * 0.59 + color.B * 0.11);
                         dots[index] = (luminance < threshold);
                         index++;
@@ -37,17 +36,15 @@ namespace ESC_POS_USB_NET.EpsonCommands
                 return new BitmapData()
                 {
                     Dots = dots,
-                    Height = (int)(bitmap.Height * scale),
-                    Width = (int)(bitmap.Width * scale)
+                    Height = (int)(bmp.Height * scale),
+                    Width = (int)(bmp.Width * scale)
                 };
-            }
+       
         }
 
-        byte[] IImage.Print(string path)
+        byte[] IImage.Print(Bitmap image)
         {
-            if (!File.Exists(path))
-                return null;
-            var data = GetBitmapData(path);
+            var data = GetBitmapData(image);
             BitArray dots = data.Dots;
             byte[] width = BitConverter.GetBytes(data.Width);
 
