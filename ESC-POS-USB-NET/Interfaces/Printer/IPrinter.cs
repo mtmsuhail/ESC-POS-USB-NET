@@ -1,4 +1,5 @@
 ﻿using ESC_POS_USB_NET.Enums;
+using System.Drawing;
 
 namespace ESC_POS_USB_NET.Interfaces.Printer
 {
@@ -35,7 +36,7 @@ namespace ESC_POS_USB_NET.Interfaces.Printer
         void FullPaperCut();
         void PartialPaperCut();
         void OpenDrawer();
-        void Image(string path);
+        void Image(Bitmap image);
         void QrCode(string qrData);
         void QrCode(string qrData, QrCodeSize qrCodeSize);
         void Code128(string code);
