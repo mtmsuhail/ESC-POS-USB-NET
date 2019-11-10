@@ -1,12 +1,11 @@
-﻿using Microsoft.VisualBasic;
-using System.Collections.Generic;
-using System;
-using System.Text;
-using ESC_POS_USB_NET.Enums;
+﻿using ESC_POS_USB_NET.Enums;
 using ESC_POS_USB_NET.EpsonCommands;
 using ESC_POS_USB_NET.Helper;
 using ESC_POS_USB_NET.Interfaces.Command;
 using ESC_POS_USB_NET.Interfaces.Printer;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ESC_POS_USB_NET.Printer
 {
