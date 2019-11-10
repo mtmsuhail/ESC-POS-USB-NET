@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Authors>MTM Suhail
+</Authors>
+    <ApplicationVersion>1.0.0</ApplicationVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>ESC_POS_USB_NET</RootNamespace>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>This project is a simple .NET (C#) Implementation of the Epson ESC/POS Printing using USB Device Driver.</Description>
+    <Copyright>Copyright (c) 2019 MTM Suhail</Copyright>
+    <PackageLicenseFile></PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/mtmsuhail/ESC-POS-USB-NET</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mtmsuhail/ESC-POS-USB-NET/master/Icon/Icon.ico</PackageIconUrl>
+    <RepositoryUrl>https://github.com/mtmsuhail/ESC-POS-USB-NET</RepositoryUrl>
+    <NeutralLanguage>English</NeutralLanguage>
+    <Title>ESC/POS USB Print </Title>
+    <Version>1.0.5</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType />
+    <PackageTags>ESC/POS ThermalPrinter C# .Net USB Printing</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.5.0" />
+  </ItemGroup>
+
+</Project>
