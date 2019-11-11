@@ -53,6 +53,12 @@ Enjoy 🎉
 
 ### ❤️ Example Using C#
 
+Import ESC_POS_USB_NET Printer Class:
+
+```csharp
+using ESC_POS_USB_NET.Printer;
+```
+
 You can find printer name from (Windows):  Control Panel->Hardware and Sound->Devices and Printers-> Your Printer's Name
 
 **Test Print**:
