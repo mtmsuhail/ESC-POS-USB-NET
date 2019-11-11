@@ -31,5 +31,27 @@ namespace ESC_POS_USB_NET_DEMO
             printer.FullPaperCut();
             printer.PrintDocument();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Printer printer = new Printer(txtPrinterName.Text);
+            printer.Append("Code 128");
+            printer.Code128("123456789");
+            printer.Separator();
+            printer.Append("Code39");
+            printer.Code39("123456789");
+            printer.Separator();
+            printer.Append("Ean13");
+            printer.Ean13("1234567891231");
+            printer.FullPaperCut();
+            printer.PrintDocument();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Printer printer = new Printer(txtPrinterName.Text);
+            printer.OpenDrawer();
+            printer.PrintDocument();
+        }
     }
 }
