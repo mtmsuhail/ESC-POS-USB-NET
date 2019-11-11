@@ -13,6 +13,12 @@
             <Button Height="40" FontSize="18" Click="Button_Click">Test Print</Button>
             <Separator Margin="0,30,0,0"></Separator>
             <Button Height="40" FontSize="18" Click="Button_Click_1">Image Print</Button>
+
+            <Separator Margin="0,30,0,0"></Separator>
+            <Button Height="40" FontSize="18" Click="Button_Click_2" >Print Barcode</Button>
+
+            <Separator Margin="0,30,0,0"></Separator>
+            <Button Height="40" FontSize="18" Click="Button_Click_3"  >Open Drawer</Button>
         </StackPanel>
     </Grid>
 </Window>
