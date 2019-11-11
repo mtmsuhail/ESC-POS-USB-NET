@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/mtmsuhail/ESC-POS-USB-NET/master/Icon/Icon.png" width="218px" alt="ESC-POS-USB-NET Logo" />
 </p>
-<h3 align="center">Printing Epson ESC/POS made simple and fast.</h3>
+<h3 align="center">Printing ESC/POS made simple and fast.</h3>
 <p align="center">The most advanced open-source to build powerful thermal printing solution with no effort.</p>
 <br />
 <p align="center">
