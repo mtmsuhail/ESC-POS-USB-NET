@@ -13,7 +13,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
   
                 var threshold = 127;
                 var index = 0;
-                double multiplier = 500; // this depends on your printer model.
+                double multiplier = 576; // this depends on your printer model.
                 double scale = (double)(multiplier / (double)bmp.Width);
                 int xheight = (int)(bmp.Height * scale);
                 int xwidth = (int)(bmp.Width * scale);
