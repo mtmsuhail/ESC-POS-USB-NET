@@ -20,6 +20,8 @@ ESC-POS-USB-NET is a free and open source .NET (C#) Implementation of the Epson 
 - **Focus on your business logic**. With ESC-POS-USB-NET, you should focus on your business logic. we do the printing logic.
 - **Customizable**. You can quickly build your logic by fully customizing the code to fit your needs perfectly.
 
+
+
 ## Getting Started
 
 follow the steps below:
@@ -46,6 +48,9 @@ This command install ESC-POS-USB-NET with your project.
 
 Enjoy 🎉
 
+
+
+
 ### 🖐 Example Using C#
 
 **Test Print**:
@@ -61,12 +66,14 @@ You can find printer name from (Windows):  Control Panel->Hardware and Sound->De
 **Print Image**:
 
 ```csharp
-Printer printer = new Printer(txtPrinterName.Text);
+Printer printer = new Printer("Printer Name");
 Bitmap image =new Bitmap ( Bitmap.FromFile("Icon.bmp"));
 printer.Image(image);
 printer.FullPaperCut();
 printer.PrintDocument();
 ```
+
+
 
 ### 🖐 Requirements
 
