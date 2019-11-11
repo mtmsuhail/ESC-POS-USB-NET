@@ -53,6 +53,8 @@ Enjoy 🎉
 
 ### ❤️ Example Using C#
 
+You can find printer name from (Windows):  Control Panel->Hardware and Sound->Devices and Printers-> Your Printer's Name
+
 **Test Print**:
 
 ```csharp
@@ -61,7 +63,6 @@ printer.TestPrinter();
 printer.FullPaperCut();
 printer.PrintDocument();
 ```
-You can find printer name from (Windows):  Control Panel->Hardware and Sound->Devices and Printers-> Your Printer's Name
 
 **Print Image**:
 
@@ -73,6 +74,21 @@ printer.FullPaperCut();
 printer.PrintDocument();
 ```
 
+**Print Barcodes**:
+
+```csharp
+Printer printer = new Printer("Printer Name");
+printer.Append("Code 128");
+printer.Code128("123456789");
+printer.Separator();
+printer.Append("Code39");
+printer.Code39("123456789");
+printer.Separator();
+printer.Append("Ean13");
+printer.Ean13("1234567891231");
+printer.FullPaperCut();
+printer.PrintDocument();
+```
 
 ## 🎈 Features
 
