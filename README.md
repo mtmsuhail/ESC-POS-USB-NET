@@ -46,6 +46,28 @@ This command install ESC-POS-USB-NET with your project.
 
 Enjoy 🎉
 
+### 🖐 Example Using C#
+
+**Test Print**:
+
+```csharp
+Printer printer = new Printer("Printer Name");
+printer.TestPrinter();
+printer.FullPaperCut();
+printer.PrintDocument();
+```
+You can find printer name from (Windows):  Control Panel->Hardware and Sound->Devices and Printers-> Your Printer's Name
+
+**Print Image**:
+
+```csharp
+Printer printer = new Printer(txtPrinterName.Text);
+Bitmap image =new Bitmap ( Bitmap.FromFile("Icon.bmp"));
+printer.Image(image);
+printer.FullPaperCut();
+printer.PrintDocument();
+```
+
 ### 🖐 Requirements
 
 **Supported operating systems**:
