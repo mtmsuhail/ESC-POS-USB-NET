@@ -51,7 +51,7 @@ Enjoy 🎉
 
 
 
-### 🖐 Example Using C#
+### ❤️ Example Using C#
 
 **Test Print**:
 
@@ -74,6 +74,17 @@ printer.PrintDocument();
 ```
 
 
+## 🎈 Features
+
+- **Alignment:** Left, Right and Center alignment.
+- **BarCode:** Code128, Code39, Ean13 barcodes are supported.
+- **Drawer:** Drawer Open facility.
+- **Font Mode:** Supported Bold, Underline, Expanded, Condensed modes.
+- **Change Font:** Change font to device specified FontA, FontB, FontC, FontD, FontE, SpecialFontA and SpecialFontB.
+- **Font Width:** Supported Normal, DoubleWidth2 and DoubleWidth3.
+- **Image:** Print BMP Image.
+- **Paper Cut:** Cut paper with Full & Partial Cut.
+- **QrCode:** Support 2D barcode (QrCode).
 
 ### 🖐 Requirements
 
@@ -94,22 +105,12 @@ printer.PrintDocument();
 
 This project is currently in **Under Development**. Significant breaking changes are unlikely at this stage of the project, but using the latest version ensures you have all the latest features and updates. New releases are usually shipped every two weeks to fix/enhance the project.
 
-## Features
 
-- **Alignment:** Left, Right and Center alignment.
-- **BarCode:** Code128, Code39, Ean13 barcodes are supported.
-- **Drawer:** Drawer Open facility.
-- **Font Mode:** Supported Bold, Underline, Expanded, Condensed modes.
-- **Change Font:** Change font to device specified FontA, FontB, FontC, FontD, FontE, SpecialFontA and SpecialFontB.
-- **Font Width:** Supported Normal, DoubleWidth2 and DoubleWidth3.
-- **Image:** Print BMP Image.
-- **Paper Cut:** Cut paper with Full & Partial Cut.
-- **QrCode:** Support 2D barcode (QrCode).
 
-## Contributing
+## 🧑‍🤝‍🧑 Contributing
 
 We welcome open an issue if you have any trouble.
 
-## License
+## 📝 License
 
 [MIT License](https://raw.githubusercontent.com/mtmsuhail/ESC-POS-USB-NET/master/LICENSE) Copyright (c) 2019 MTM Suhail.
