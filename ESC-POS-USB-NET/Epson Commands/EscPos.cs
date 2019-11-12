@@ -1,4 +1,5 @@
 ﻿using ESC_POS_USB_NET.Enums;
+using ESC_POS_USB_NET.Epson_Commands;
 using ESC_POS_USB_NET.Extensions;
 using ESC_POS_USB_NET.Interfaces.Command;
 
@@ -15,10 +16,11 @@ namespace ESC_POS_USB_NET.EpsonCommands
         public IBarCode BarCode { get; set; }
         public IInitializePrint InitializePrint { get; set; }
         public IImage Image { get; set; }
+        public ILineHeight  LineHeight { get; set; }
         public int ColsNomal => 48;
         public int ColsCondensed => 64;
-        public int ColsExpanded => 24;
-        
+        public int ColsExpanded => 24;        
+
         public EscPos()
         {
             FontMode = new FontMode();
@@ -29,6 +31,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
             QrCode = new QrCode();
             BarCode = new BarCode();
             Image = new Image();
+            LineHeight = new LineHeight();
             InitializePrint = new InitializePrint();
         }
 

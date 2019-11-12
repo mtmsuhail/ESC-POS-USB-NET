@@ -30,6 +30,8 @@ namespace ESC_POS_USB_NET.Interfaces.Printer
         void NormalWidth();
         void DoubleWidth2();
         void DoubleWidth3();
+        void NormalLineHeight();
+        void SetLineHeight(byte height);
         void AlignLeft();
         void AlignRight();
         void AlignCenter();

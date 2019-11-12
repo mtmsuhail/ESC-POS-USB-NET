@@ -13,6 +13,7 @@
         IQrCode QrCode { get; set; }
         IBarCode BarCode { get; set; }
         IImage Image { get; set; }
+        ILineHeight LineHeight { get; set; }
         IInitializePrint InitializePrint { get; set; }
         byte[] Separator();
         byte[] AutoTest();

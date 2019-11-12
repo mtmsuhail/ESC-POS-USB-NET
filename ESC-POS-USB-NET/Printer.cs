@@ -1,5 +1,6 @@
 ﻿using ESC_POS_USB_NET.Enums;
 using ESC_POS_USB_NET.EpsonCommands;
+using ESC_POS_USB_NET.Extensions;
 using ESC_POS_USB_NET.Helper;
 using ESC_POS_USB_NET.Interfaces.Command;
 using ESC_POS_USB_NET.Interfaces.Printer;
@@ -156,7 +157,13 @@ namespace ESC_POS_USB_NET.Printer
             Font("Font Special A", Fonts.SpecialFontA);
             Font("Font Special B", Fonts.SpecialFontB);
             Separator();
-            NewLines(5);
+            InitializePrint();
+            SetLineHeight(24);
+            Append("This is first line with line height of 30 dots");
+            SetLineHeight(40);
+            Append("This is second line with line height of 24 dots");
+            Append("This is third line with line height of 40 dots");
+            NewLines(3);
             Append("End of Test :)");
             Separator();
         }
@@ -284,6 +291,15 @@ namespace ESC_POS_USB_NET.Printer
         public void Image(Bitmap image)
         {
             Append(_command.Image.Print(image));
+        }
+        public void NormalLineHeight()
+        {
+            Append(_command.LineHeight.Normal());
+        }
+
+        public void SetLineHeight(byte height)
+        {
+            Append(_command.LineHeight.SetLineHeight(height));
         }
     }
 }
