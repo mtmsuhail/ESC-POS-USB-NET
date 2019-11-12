@@ -28,7 +28,7 @@ follow the steps below:
 
 ### ⏳ Installation
 
-Install Strapi with this **Quickstart** command to create a project instantly:
+Install this **Quickstart** command to create a project instantly:
 
 - (Use **nuget** package manager to install (recommended))
 
