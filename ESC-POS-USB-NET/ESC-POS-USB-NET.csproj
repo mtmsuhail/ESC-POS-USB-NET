@@ -17,7 +17,7 @@
     <RepositoryUrl>https://github.com/mtmsuhail/ESC-POS-USB-NET</RepositoryUrl>
     <NeutralLanguage>English</NeutralLanguage>
     <Title>ESC/POS USB Print </Title>
-    <Version>1.0.9</Version>
+    <Version>1.1.0</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType />
     <PackageTags>ESC/POS ThermalPrinter C# .Net USB Printing</PackageTags>
