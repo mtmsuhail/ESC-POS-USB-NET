@@ -106,9 +106,9 @@ namespace ESC_POS_USB_NET.Printer
             _buffer = null;
         }
 
-        public void Separator()
+        public void Separator(char speratorChar = '-')
         {
-            Append(_command.Separator());
+            Append(_command.Separator(speratorChar ));
         }
 
         public void AutoTest()

@@ -15,7 +15,7 @@ namespace ESC_POS_USB_NET.Interfaces.Printer
         void NewLine();
         void NewLines(int lines);
         void Clear();
-        void Separator();
+        void Separator(char speratorChar = '-');
         void AutoTest();
         void TestPrinter();
         void Font(string value, Fonts state);

@@ -35,10 +35,10 @@ namespace ESC_POS_USB_NET.EpsonCommands
             InitializePrint = new InitializePrint();
         }
 
-        public byte[] Separator()
+        public byte[] Separator(char speratorChar= '-')
         {
             return FontMode.Condensed(PrinterModeState.On)
-                .AddBytes(new string('-', ColsCondensed))
+                .AddBytes(new string(speratorChar, ColsCondensed))
                 .AddBytes(FontMode.Condensed(PrinterModeState.Off))
                 .AddCrLF();
         }

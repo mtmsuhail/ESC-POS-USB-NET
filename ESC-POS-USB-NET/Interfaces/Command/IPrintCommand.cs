@@ -15,7 +15,7 @@
         IImage Image { get; set; }
         ILineHeight LineHeight { get; set; }
         IInitializePrint InitializePrint { get; set; }
-        byte[] Separator();
+        byte[] Separator(char speratorChar = '-');
         byte[] AutoTest();
     }
 }
