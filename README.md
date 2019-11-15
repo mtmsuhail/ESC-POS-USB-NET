@@ -28,7 +28,7 @@ follow the steps below:
 
 ### ⏳ Installation
 
-Use this **Quickstart** command to install it in your project :
+Use this **Quickstart** command to install in your project :
 
 - (Use **nuget** package manager to install (recommended))
 
