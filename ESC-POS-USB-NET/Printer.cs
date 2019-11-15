@@ -263,24 +263,24 @@ namespace ESC_POS_USB_NET.Printer
             Append(_command.QrCode.Print(qrData));
         }
 
-        public void QrCode(string qrData, QrCodeSize qrCodeSize)
+        public void QrCode(string qrData, QrCodeSize qrCodeSize )
         {
             Append(_command.QrCode.Print(qrData, qrCodeSize));
         }
 
-        public void Code128(string code)
+        public void Code128(string code, Positions printString = Positions.NotPrint)
         {
-            Append(_command.BarCode.Code128(code));
+            Append(_command.BarCode.Code128(code,  printString));
         }
 
-        public void Code39(string code)
+        public void Code39(string code, Positions printString=Positions.NotPrint)
         {
-            Append(_command.BarCode.Code39(code));
+            Append(_command.BarCode.Code39(code,  printString));
         }
 
-        public void Ean13(string code)
+        public void Ean13(string code, Positions printString = Positions.NotPrint)
         {
-            Append(_command.BarCode.Ean13(code));
+            Append(_command.BarCode.Ean13(code,  printString));
         }
 
         public void InitializePrint()
