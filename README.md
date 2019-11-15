@@ -104,6 +104,24 @@ printer.OpenDrawer();
 printer.PrintDocument();
 ```
 
+**Different Types of Separators**:
+
+```csharp
+Printer printer = new Printer(txtPrinterName.Text);
+printer.Separator(); // Deafult
+printer.Separator('.'); // .
+printer.Separator('|'); // |
+printer.Separator('='); // =
+printer.Separator('+'); // +
+printer.Separator('*'); // *
+printer.Separator('^'); // ^
+printer.Separator('~'); // ~
+printer.Separator(':'); // :
+printer.Separator('#'); // #
+printer.FullPaperCut();
+printer.PrintDocument();
+```
+
 **Typography Test**:
 
 ```csharp
