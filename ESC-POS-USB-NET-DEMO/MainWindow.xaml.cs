@@ -41,7 +41,7 @@ namespace ESC_POS_USB_NET_DEMO
             printer.Separator();
             printer.Append("Code39");
             printer.Code39("123456789",Positions.BelowBarcode);
-            printer.Separator();
+            printer.Separator('=');
             printer.Append("Ean13");
             printer.Ean13("1234567891231",Positions.AbovBarcode);
             printer.FullPaperCut();
@@ -52,6 +52,24 @@ namespace ESC_POS_USB_NET_DEMO
         {
             Printer printer = new Printer(txtPrinterName.Text);
             printer.OpenDrawer();
+            printer.PrintDocument();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Printer printer = new Printer(txtPrinterName.Text);
+            printer.Separator(); // Deafult
+            printer.Separator('.'); // .
+            printer.Separator('|'); // |
+            printer.Separator('='); // =
+            printer.Separator('+'); // +
+            printer.Separator('*'); // *
+            printer.Separator('^'); // ^
+            printer.Separator('~'); // ~
+            printer.Separator(':'); // :
+            printer.Separator('#'); // #
+            printer.Separator('❤'); // <>
+            printer.FullPaperCut();
             printer.PrintDocument();
         }
     }

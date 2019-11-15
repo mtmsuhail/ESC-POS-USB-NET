@@ -19,6 +19,9 @@
 
             <Separator Margin="0,30,0,0"></Separator>
             <Button Height="40" FontSize="18" Click="Button_Click_3"  >Open Drawer</Button>
+
+            <Separator Margin="0,30,0,0"></Separator>
+            <Button Height="40" FontSize="18" Click="Button_Click_4"   >Custom Seperator</Button>
         </StackPanel>
     </Grid>
 </Window>
