@@ -68,7 +68,6 @@ namespace ESC_POS_USB_NET_DEMO
             printer.Separator('~'); // ~
             printer.Separator(':'); // :
             printer.Separator('#'); // #
-            printer.Separator('❤'); // <>
             printer.FullPaperCut();
             printer.PrintDocument();
         }
