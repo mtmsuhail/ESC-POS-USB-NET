@@ -28,7 +28,7 @@ follow the steps below:
 
 ### ⏳ Installation
 
-Install this **Quickstart** command to create a project instantly:
+Use this **Quickstart** command to install it in your project :
 
 - (Use **nuget** package manager to install (recommended))
 
