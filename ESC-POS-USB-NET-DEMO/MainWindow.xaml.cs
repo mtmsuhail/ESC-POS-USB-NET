@@ -1,4 +1,5 @@
-﻿using ESC_POS_USB_NET.Printer;
+﻿using ESC_POS_USB_NET.Enums;
+using ESC_POS_USB_NET.Printer;
 using System;
 using System.Drawing;
 using System.Windows;
@@ -39,10 +40,10 @@ namespace ESC_POS_USB_NET_DEMO
             printer.Code128("123456789");
             printer.Separator();
             printer.Append("Code39");
-            printer.Code39("123456789");
+            printer.Code39("123456789",Positions.BelowBarcode);
             printer.Separator();
             printer.Append("Ean13");
-            printer.Ean13("1234567891231");
+            printer.Ean13("1234567891231",Positions.AbovBarcode);
             printer.FullPaperCut();
             printer.PrintDocument();
         }
