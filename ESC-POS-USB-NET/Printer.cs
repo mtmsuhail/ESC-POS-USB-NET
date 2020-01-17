@@ -16,11 +16,12 @@ namespace ESC_POS_USB_NET.Printer
         private byte[] _buffer;
         private readonly string _printerName;
         private readonly IPrintCommand _command;
-
-        public Printer(string printerName)
+        private readonly string _codepage;
+        public Printer(string printerName, string codepage= "IBM860")
         {
             _printerName = string.IsNullOrEmpty(printerName) ? "escpos.prn" : printerName.Trim();
             _command = new EscPos();
+            _codepage = codepage;
         }
 
         public int ColsNomal
@@ -85,7 +86,7 @@ namespace ESC_POS_USB_NET.Printer
             var list = new List<byte>();
             if (_buffer != null)
                 list.AddRange(_buffer);
-            var bytes = Encoding.GetEncoding("IBM860").GetBytes(value);
+            var bytes = Encoding.GetEncoding(_codepage).GetBytes(value);
             list.AddRange(bytes);
             _buffer = list.ToArray();
         }
