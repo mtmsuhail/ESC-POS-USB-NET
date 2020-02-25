@@ -58,7 +58,7 @@ namespace ESC_POS_USB_NET_DEMO
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             Printer printer = new Printer(txtPrinterName.Text);
-            printer.Separator(); // Deafult
+            printer.Separator(); // Default
             printer.Separator('.'); // .
             printer.Separator('|'); // |
             printer.Separator('='); // =
