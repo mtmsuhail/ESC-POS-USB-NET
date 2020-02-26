@@ -107,7 +107,7 @@ printer.PrintDocument();
 **Different Types of Separators**:
 
 ```csharp
-Printer printer = new Printer(txtPrinterName.Text);
+Printer printer = new Printer("Printer Name");
 printer.Separator(); // Deafult
 printer.Separator('.'); // .
 printer.Separator('|'); // |
