@@ -41,7 +41,7 @@ namespace ESC_POS_USB_NET.Interfaces.Printer
         void Image(Bitmap image);
         void QrCode(string qrData);
         void QrCode(string qrData, QrCodeSize qrCodeSize);
-        void Code128(string code, Positions positions);
+        void Code128(string code, Positions positions, BarCodeCharSet codeCharSet);
         void Code39(string code, Positions positions);
         void Ean13(string code, Positions positions);
         void InitializePrint();

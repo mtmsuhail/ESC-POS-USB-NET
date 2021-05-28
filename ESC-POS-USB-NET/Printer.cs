@@ -269,9 +269,9 @@ namespace ESC_POS_USB_NET.Printer
             Append(_command.QrCode.Print(qrData, qrCodeSize));
         }
 
-        public void Code128(string code, Positions printString = Positions.NotPrint)
+        public void Code128(string code, Positions printString = Positions.NotPrint, BarCodeCharSet codeCharSet = BarCodeCharSet.C)
         {
-            Append(_command.BarCode.Code128(code,  printString));
+            Append(_command.BarCode.Code128(code,  printString, codeCharSet));
         }
 
         public void Code39(string code, Positions printString=Positions.NotPrint)
