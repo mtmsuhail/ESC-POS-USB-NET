@@ -55,6 +55,18 @@ namespace ESC_POS_USB_NET.Printer
             if (!RawPrinterHelper.SendBytesToPrinter(_printerName, _buffer))
                 throw new ArgumentException("Unable to access printer : " + _printerName);
         }
+        
+        public void PrintDocument(byte[] bytes)
+        {
+            _buffer = bytes;
+            PrintDocument();
+        }
+
+        public void PrintDocument(List<byte> bytes)
+        {
+            _buffer = bytes.ToArray();
+            PrintDocument();
+        }
 
         public void Append(string value)
         {
