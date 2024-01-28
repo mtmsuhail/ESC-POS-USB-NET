@@ -13,14 +13,17 @@
   </a>
 </p>
 
+
+<p align="center">
+    <a href="https://www.buymeacoffee.com/mtmsuhail" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+</p>
+
 <br>
 
 ESC-POS-USB-NET is a free and open source .NET (C#) Implementation of the Epson ESC/POS Printing using USB Device Driver.
 
 - **Focus on your business logic**. With ESC-POS-USB-NET, you should focus on your business logic. we do the printing logic.
-- **Customizable**. You can quickly build your logic by fully customizing the code to fit your needs perfectly.
-
-
+- **Customizable**. You can quickly build your logic by fully customizing the code to fit your needs perfectly.=
 
 ## Getting Started
 
@@ -209,8 +212,6 @@ printer.PrintDocument();
 
 This project is currently in **Under Development**. Significant breaking changes are unlikely at this stage of the project, but using the latest version ensures you have all the latest features and updates. New releases are usually shipped every two weeks to fix/enhance the project.
 
-
-
 ## 🧑‍🤝‍🧑 Contributing
 
 We welcome open an issue if you have any trouble.
@@ -218,3 +219,7 @@ We welcome open an issue if you have any trouble.
 ## 📝 License
 
 [MIT License](https://raw.githubusercontent.com/mtmsuhail/ESC-POS-USB-NET/master/LICENSE) Copyright (c) 2019 MTM Suhail.
+
+### ❤️ Support 
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/mtmsuhail)
