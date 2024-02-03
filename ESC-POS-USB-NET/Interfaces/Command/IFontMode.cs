@@ -6,6 +6,8 @@ namespace ESC_POS_USB_NET.Interfaces.Command
     {
         byte[] Bold(string value);
         byte[] Bold(PrinterModeState state);
+        byte[] Reverse(string value);
+        byte[] Reverse(PrinterModeState state);
         byte[] Underline(string value);
         byte[] Underline(PrinterModeState state);
         byte[] Expanded(string value);

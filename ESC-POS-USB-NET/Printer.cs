@@ -126,6 +126,9 @@ namespace ESC_POS_USB_NET.Printer
             BoldMode("Bold Text");
             UnderlineMode("Underlined text");
             Separator();
+            Append("Text Reversed");
+            ReverseMode("Reversed text");
+            Separator();
             ExpandedMode(PrinterModeState.On);
             Append("Expanded - 23 COLUMNS");
             Append("1...5...10...15...20..23");
@@ -177,6 +180,16 @@ namespace ESC_POS_USB_NET.Printer
         public void BoldMode(PrinterModeState state)
         {
             Append(_command.FontMode.Bold(state));
+        }
+
+        public void ReverseMode(string value)
+        {
+            Append(_command.FontMode.Reverse(value));
+        }
+
+        public void ReverseMode(PrinterModeState state)
+        {
+            Append(_command.FontMode.Reverse(state));
         }
 
         public void Font(string value, Fonts state)
