@@ -6,7 +6,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
 {
     public class BarCode : IBarCode
     {
-        public byte[] Code128(string code,Positions printString=Positions.NotPrint)
+        public byte[] Code128(string code,Positions printString=Positions.NotPrint, BarCodeCharSet codeSet = BarCodeCharSet.C)
         {
             return new byte[] { 29, 119, 2 } // Width
                 .AddBytes(new byte[] { 29, 104, 50 }) // Height
@@ -14,7 +14,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
                 .AddBytes(new byte[] { 29, 72, printString.ToByte() }) // If print code informed
                 .AddBytes(new byte[] { 29, 107, 73 }) // printCode
                 .AddBytes(new[] { (byte)(code.Length + 2) })
-                .AddBytes(new[] { '{'.ToByte(), 'C'.ToByte() })
+                .AddBytes(new[] { '{'.ToByte(), codeSet.ToByte() })
                 .AddBytes(code)
                 .AddLF();
         }
