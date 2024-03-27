@@ -3,54 +3,61 @@ using System;
 using System.IO;
 using ESC_POS_USB_NET.Interfaces.Command;
 using System.Drawing;
+using ESC_POS_USB_NET.Extensions;
 
 namespace ESC_POS_USB_NET.EpsonCommands
 {
     public class Image : IImage
     {
-        private static BitmapData GetBitmapData(Bitmap bmp)
+        private static BitmapData GetBitmapData(Bitmap bmp, bool isScale)
         {
-  
-                var threshold = 127;
-                var index = 0;
+            double scale = 1;
+            if (isScale)
+            {
                 double multiplier = 576; // this depends on your printer model.
-                double scale = (double)(multiplier / (double)bmp.Width);
-                int xheight = (int)(bmp.Height * scale);
-                int xwidth = (int)(bmp.Width * scale);
-                var dimensions = xwidth * xheight;
-                var dots = new BitArray(dimensions);
+                scale = (double)(multiplier / (double)bmp.Width);
+            }
 
-                for (var y = 0; y < xheight; y++)
+            int xheight = (int)(bmp.Height * scale);
+            int xwidth = (int)(bmp.Width * scale);
+            var dimensions = xwidth * xheight;
+            var dots = new BitArray(dimensions);
+            var threshold = 127; //127 or 128
+            var index = 0;
+
+            for (var y = 0; y < xheight; y++)
+            {
+                for (var x = 0; x < xwidth; x++)
                 {
-                    for (var x = 0; x < xwidth; x++)
-                    {
-                        var _x = (int)(x / scale);
-                        var _y = (int)(y / scale);
-                        var color = bmp.GetPixel(_x, _y);
-                        var luminance = (int)(color.R * 0.3 + color.G * 0.59 + color.B * 0.11);
-                        dots[index] = (luminance < threshold);
-                        index++;
-                    }
+                    var _x = (int)(x / scale);
+                    var _y = (int)(y / scale);
+                    var color = bmp.GetPixel(_x, _y);
+                    var luminance = (int)(color.R * 0.3 + color.G * 0.59 + color.B * 0.11);
+                    dots[index] = (luminance < threshold);
+                    index++;
                 }
+            }
 
-                return new BitmapData()
-                {
-                    Dots = dots,
-                    Height = (int)(bmp.Height * scale),
-                    Width = (int)(bmp.Width * scale)
-                };
-       
+            return new BitmapData()
+            {
+                Dots = dots,
+                Height = (int)(bmp.Height * scale),
+                Width = (int)(bmp.Width * scale)
+            };
+
         }
 
-        byte[] IImage.Print(Bitmap image)
+        byte[] IImage.Print(Bitmap image, bool isScale)
         {
-            var data = GetBitmapData(image);
+            var data = GetBitmapData(image, isScale);
             BitArray dots = data.Dots;
             byte[] width = BitConverter.GetBytes(data.Width);
 
             int offset = 0;
             MemoryStream stream = new MemoryStream();
             BinaryWriter bw = new BinaryWriter(stream);
+            var center = new byte[] { 27, 'a'.ToByte(), 1 };
+            var left = new byte[] { 27, 'a'.ToByte(), 0 };
 
             bw.Write((char)0x1B);
             bw.Write('@');
@@ -58,6 +65,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
             bw.Write((char)0x1B);
             bw.Write('3');
             bw.Write((byte)24);
+            bw.Write(new byte[] { 27, 'a'.ToByte(), 1 }); // Center
 
             while (offset < data.Height)
             {
@@ -94,10 +102,12 @@ namespace ESC_POS_USB_NET.EpsonCommands
                 offset += 24;
                 bw.Write((char)0x0A);
             }
+
             // Restore the line spacing to the default of 30 dots.
             bw.Write((char)0x1B);
             bw.Write('3');
             bw.Write((byte)30);
+            bw.Write(new byte[] { 27, 'a'.ToByte(), 0 } ); //Left
 
             bw.Flush();
             byte[] bytes = stream.ToArray();
