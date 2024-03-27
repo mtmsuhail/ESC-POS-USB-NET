@@ -289,9 +289,9 @@ namespace ESC_POS_USB_NET.Printer
             RawPrinterHelper.SendBytesToPrinter(_printerName, _command.InitializePrint.Initialize());
         }
 
-        public void Image(Bitmap image)
+        public void Image(Bitmap image, bool isScale = true)
         {
-            Append(_command.Image.Print(image));
+            Append(_command.Image.Print(image, isScale));
         }
         public void NormalLineHeight()
         {
