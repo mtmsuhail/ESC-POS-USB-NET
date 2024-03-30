@@ -4,7 +4,7 @@
     <Authors>MTM Suhail
 </Authors>
     <ApplicationVersion>1.0.0</ApplicationVersion>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <RootNamespace>ESC_POS_USB_NET</RootNamespace>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+    <PackageReference Condition="'$(TargetFramework)' == 'netstandard2.0'" Include="System.Drawing.Common" Version="4.6.0" />
   </ItemGroup>
 
 </Project>

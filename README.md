@@ -136,6 +136,11 @@ printer.Append("Text Normal");
 printer.BoldMode("Bold Text");
 printer.UnderlineMode("Underlined text");
 printer.Separator();
+printer.AppendWithoutLf("Text ");
+printer.ReverseModeNoLF("reversed");
+printer.Append(" and normal.");
+printer.ReverseMode("Reversed text line.");
+printer.Separator();
 printer.ExpandedMode(PrinterModeState.On);
 printer.Append("Expanded - 23 COLUMNS");
 printer.Append("1...5...10...15...20..23");
@@ -206,7 +211,10 @@ printer.PrintDocument();
 **Dependencies:**
 
 - .NETStandard 2.0
-- System.Drawing.Common (>= 4.6.0)
+  - System.Drawing.Common (>= 4.6.0)
+- NetFramework 4.5
+
+*Dual-build - no more need to add `netstandard2.0` if you want to use this library with generic netFramework.*
 
 **We recommend always using the latest version of ESC-POS-USB-NET to start your new projects**.
 
@@ -215,6 +223,10 @@ This project is currently in **Under Development**. Significant breaking changes
 ## 🧑‍🤝‍🧑 Contributing
 
 We welcome open an issue if you have any trouble.
+
+## :printer: Printers information
+
+You can look at file [SPECIFIC-PRINTER-INFO](SPECIFIC-PRINTER-INFO.md) to lookup some details about printers quirks (especially those cheap/clones from China).
 
 ## 📝 License
 

@@ -123,6 +123,29 @@ namespace ESC_POS_USB_NET.EpsonCommands
             }
             return new byte[] { 27, 'M'.ToByte(), fnt };
         }
+
+        //  https://github.com/mtmsuhail/ESC-POS-USB-NET/pull/47 
+        public byte[] Reverse(PrinterModeState state)
+        {
+            return state == PrinterModeState.On
+                ? new byte[] { 29, 'B'.ToByte(), 1 }
+                : new byte[] { 29, 'B'.ToByte(), 0 };
+        }
+
+        public byte[] Reverse(string value)
+        {
+            return Reverse(PrinterModeState.On)
+                .AddBytes(value)
+                .AddBytes(Reverse(PrinterModeState.Off))
+                .AddLF();
+        }
+
+        public byte[] ReverseNoLF(string value)
+        {
+            return Reverse(PrinterModeState.On)
+                .AddBytes(value)
+                .AddBytes(Reverse(PrinterModeState.Off));
+        }
     }
 }
 

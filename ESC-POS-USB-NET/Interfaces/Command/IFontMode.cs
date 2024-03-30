@@ -14,6 +14,10 @@ namespace ESC_POS_USB_NET.Interfaces.Command
         byte[] Condensed(PrinterModeState state);
         byte[] Font(string value, Fonts state);
         byte[] Font(Fonts state);
+        byte[] Reverse(PrinterModeState state);
+        byte[] Reverse(string value);
+        byte[] ReverseNoLF(string value);
+        
     }
 }
 

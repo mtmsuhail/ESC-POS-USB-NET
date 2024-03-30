@@ -17,6 +17,15 @@ namespace ESC_POS_USB_NET.Printer
         private readonly string _printerName;
         private readonly IPrintCommand _command;
         private readonly string _codepage;
+
+
+        public byte[] Buffer { get { return _buffer; } }
+
+        /// <summary>
+        /// Define printer printhead dots count
+        /// </summary>
+        public int DotsInLine { get; set; } = 576;
+
         public Printer(string printerName, string codepage= "IBM860")
         {
             _printerName = string.IsNullOrEmpty(printerName) ? "escpos.prn" : printerName.Trim();
@@ -126,6 +135,11 @@ namespace ESC_POS_USB_NET.Printer
             BoldMode("Bold Text");
             UnderlineMode("Underlined text");
             Separator();
+            AppendWithoutLf("Text ");
+            ReverseModeNoLF("reversed");
+            Append(" and normal.");
+            ReverseMode("Reversed text line.");
+            Separator();
             ExpandedMode(PrinterModeState.On);
             Append("Expanded - 23 COLUMNS");
             Append("1...5...10...15...20..23");
@@ -214,6 +228,17 @@ namespace ESC_POS_USB_NET.Printer
             Append(_command.FontMode.Condensed(state));
         }
 
+        public void ReverseMode(string value)
+        {
+            Append(_command.FontMode.Reverse(value));
+        }
+
+        public void ReverseModeNoLF(string value)
+        {
+            Append(_command.FontMode.ReverseNoLF(value));
+        }
+
+
         public void NormalWidth()
         {
             Append(_command.FontWidth.Normal());
@@ -269,9 +294,43 @@ namespace ESC_POS_USB_NET.Printer
             Append(_command.QrCode.Print(qrData, qrCodeSize));
         }
 
+        
+        public void QrCode(string qrData, QrCodeSize qrCodeSize, QrCodeErrorCorrection errorCorrection=QrCodeErrorCorrection.L, QrCodeModel qrModel=QrCodeModel.Model2, bool NoFun165=false)
+        {
+            Append(_command.QrCode.Print(qrData, qrCodeSize, errorCorrection, qrModel, NoFun165));
+        }
+
+        public void Code128(string code)
+        {
+            Append(_command.BarCode.Code128(code, Positions.NotPrint));
+        }
+
         public void Code128(string code, Positions printString = Positions.NotPrint)
         {
             Append(_command.BarCode.Code128(code,  printString));
+        }
+
+        /// <summary>
+        /// Create Code-128, charset C, binary data input.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="printString"></param>
+        public void Code128(byte[] code, Positions printString = Positions.NotPrint)
+        {
+            Append(_command.BarCode.Code128(code, printString));
+        }
+
+        /// <summary>
+        /// Create Code-128 barcode with set charset, thin-bar width & code height (in dots).
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="printString"></param>
+        /// <param name="startCharset"></param>
+        /// <param name="barWidth"></param>
+        /// <param name="codeHeight">height in dots (default 40..50)</param>
+        public void Code128(string code, Positions printString = Positions.NotPrint, BarCodeCode128Charset startCharset=BarCodeCode128Charset.C, BarCodeBarWidth barWidth=BarCodeBarWidth.Width0250, byte codeHeight=50)
+        {
+            Append(_command.BarCode.Code128(code, printString, startCharset, barWidth, codeHeight));
         }
 
         public void Code39(string code, Positions printString=Positions.NotPrint)
@@ -279,10 +338,36 @@ namespace ESC_POS_USB_NET.Printer
             Append(_command.BarCode.Code39(code,  printString));
         }
 
+        /// <summary>
+        /// Create Code-39 with more settings: barcode thin-bar width and code height (in dots)
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="printString"></param>
+        /// <param name="barWidth"></param>
+        /// <param name="codeHeight">height in dots</param>
+        public void Code39(string code, Positions printString = Positions.NotPrint, BarCodeBarWidth barWidth = BarCodeBarWidth.Width0250, byte codeHeight = 50)
+        {
+            Append(_command.BarCode.Code39(code, printString, barWidth, codeHeight));
+        }
+
+
         public void Ean13(string code, Positions printString = Positions.NotPrint)
         {
             Append(_command.BarCode.Ean13(code,  printString));
         }
+
+        /// <summary>
+        /// Create EAN-13 barcode with more settings: thin bar width & code height (in dots)
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="printString"></param>
+        /// <param name="barWidth"></param>
+        /// <param name="codeHeight">in dots</param>
+        public void Ean13(string code, Positions printString = Positions.NotPrint, BarCodeBarWidth barWidth = BarCodeBarWidth.Width0250, byte codeHeight = 50)
+        {
+            Append(_command.BarCode.Ean13(code, printString, barWidth, codeHeight));
+        }
+
 
         public void InitializePrint()
         {
@@ -291,8 +376,14 @@ namespace ESC_POS_USB_NET.Printer
 
         public void Image(Bitmap image)
         {
-            Append(_command.Image.Print(image));
+            Append(_command.Image.Print(image, DotsInLine));
         }
+
+        public void Image(Bitmap image, bool scaleToWidth)
+        {
+            Append(_command.Image.Print(image, DotsInLine, scaleToWidth));
+        }
+
         public void NormalLineHeight()
         {
             Append(_command.LineHeight.Normal());
