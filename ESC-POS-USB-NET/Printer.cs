@@ -1,6 +1,5 @@
 ﻿using ESC_POS_USB_NET.Enums;
-using ESC_POS_USB_NET.EpsonCommands;
-using ESC_POS_USB_NET.Extensions;
+using ESC_POS_USB_NET.Commands;
 using ESC_POS_USB_NET.Helper;
 using ESC_POS_USB_NET.Interfaces.Command;
 using ESC_POS_USB_NET.Interfaces.Printer;
@@ -115,6 +114,11 @@ namespace ESC_POS_USB_NET.Printer
         public void AutoTest()
         {
             Append(_command.AutoTest());
+        }
+
+        public void DisableChineseCharacters()
+        {
+            Append(_command.DisableChineseCharacters());
         }
 
         public void TestPrinter()
@@ -289,10 +293,11 @@ namespace ESC_POS_USB_NET.Printer
             RawPrinterHelper.SendBytesToPrinter(_printerName, _command.InitializePrint.Initialize());
         }
 
-        public void Image(Bitmap image)
+        public void Image(Bitmap image, bool isScale = true)
         {
-            Append(_command.Image.Print(image));
+            Append(_command.Image.Print(image, isScale));
         }
+
         public void NormalLineHeight()
         {
             Append(_command.LineHeight.Normal());
@@ -301,6 +306,16 @@ namespace ESC_POS_USB_NET.Printer
         public void SetLineHeight(byte height)
         {
             Append(_command.LineHeight.SetLineHeight(height));
+        }
+
+        public void FontNormalSize()
+        {
+            Append(_command.FontSize.Normal());
+        }
+
+        public void FontCustomSize(int width, int height)
+        {
+            Append(_command.FontSize.CustomSize(width, height));
         }
     }
 }

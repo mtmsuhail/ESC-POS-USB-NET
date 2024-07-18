@@ -1,9 +1,8 @@
 ﻿using ESC_POS_USB_NET.Enums;
-using ESC_POS_USB_NET.Epson_Commands;
 using ESC_POS_USB_NET.Extensions;
 using ESC_POS_USB_NET.Interfaces.Command;
 
-namespace ESC_POS_USB_NET.EpsonCommands
+namespace ESC_POS_USB_NET.Commands
 {
     internal class EscPos : IPrintCommand
     {
@@ -17,6 +16,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
         public IInitializePrint InitializePrint { get; set; }
         public IImage Image { get; set; }
         public ILineHeight  LineHeight { get; set; }
+        public IFontSize FontSize { get; set; }
         public int ColsNomal => 48;
         public int ColsCondensed => 64;
         public int ColsExpanded => 24;        
@@ -32,6 +32,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
             BarCode = new BarCode();
             Image = new Image();
             LineHeight = new LineHeight();
+            FontSize = new FontSize();
             InitializePrint = new InitializePrint();
         }
 
@@ -46,6 +47,11 @@ namespace ESC_POS_USB_NET.EpsonCommands
         public byte[] AutoTest()
         {
             return new byte[] { 29, 40, 65, 2, 0, 0, 2 };
+        }
+
+        public byte[] DisableChineseCharacters()
+        {
+            return new byte[] { 0x1C, 0x2E };
         }
 
     }

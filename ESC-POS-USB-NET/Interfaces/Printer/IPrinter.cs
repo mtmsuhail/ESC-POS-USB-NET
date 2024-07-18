@@ -17,6 +17,7 @@ namespace ESC_POS_USB_NET.Interfaces.Printer
         void Clear();
         void Separator(char speratorChar = '-');
         void AutoTest();
+        void DisableChineseCharacters();
         void TestPrinter();
         void Font(string value, Fonts state);
         void BoldMode(string value);
@@ -32,13 +33,15 @@ namespace ESC_POS_USB_NET.Interfaces.Printer
         void DoubleWidth3();
         void NormalLineHeight();
         void SetLineHeight(byte height);
+        void FontNormalSize();
+        void FontCustomSize(int width, int height);
         void AlignLeft();
         void AlignRight();
         void AlignCenter();
         void FullPaperCut();
         void PartialPaperCut();
         void OpenDrawer();
-        void Image(Bitmap image);
+        void Image(Bitmap image, bool isScale = false);
         void QrCode(string qrData);
         void QrCode(string qrData, QrCodeSize qrCodeSize);
         void Code128(string code, Positions positions);

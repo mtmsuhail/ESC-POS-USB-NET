@@ -14,9 +14,11 @@
         IBarCode BarCode { get; set; }
         IImage Image { get; set; }
         ILineHeight LineHeight { get; set; }
+        IFontSize FontSize { get; set; }
         IInitializePrint InitializePrint { get; set; }
         byte[] Separator(char speratorChar = '-');
         byte[] AutoTest();
+        byte[] DisableChineseCharacters();
     }
 }
 

@@ -2,7 +2,7 @@
 using ESC_POS_USB_NET.Extensions;
 using ESC_POS_USB_NET.Interfaces.Command;
 
-namespace ESC_POS_USB_NET.EpsonCommands
+namespace ESC_POS_USB_NET.Commands
 {
     public class BarCode : IBarCode
     {
